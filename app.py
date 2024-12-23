@@ -12,6 +12,11 @@ from serpapi import GoogleSearch
 # Load environment variables
 load_dotenv()
 
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+SERPAPI_API_KEY = st.secrets["SERPAPI_API_KEY"]
+OPENAI_API_MODEL = st.secrets.get("OPENAI_API_MODEL", "gpt-3.5-turbo")
+OPENAI_API_TEMPERTURE = float(st.secrets.get("OPENAI_API_TEMPERTURE", 0.7))
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     st.error("OPENAI_API_KEY is not set. Please provide it in your environment variables.")
