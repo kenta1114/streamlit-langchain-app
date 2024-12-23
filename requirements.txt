@@ -1,5 +1,6 @@
 python-dotenv==1.0.1
 streamlit==1.24.0
-langchain
 openai
 google-search-results
+langchain==0.3.13
+langchain-community==0.3.13
