@@ -7,11 +7,11 @@ import os
 
 load_dotenv()
 
-OPEN_API_KEY  = os.getenv("OPENAI_API_KEY")
- 
+OPENAI_API_KEY  = os.getenv("OPENAI_API_KEY")
+
 #LangChainの設定
 llm = ChatOpenAI(
-    openai_api_key=OPEN_API_KEY,
+    openai_api_key=OPENAI_API_KEY,
     model="gpt-3.5-turbo", 
     temperature=0.7
 )
