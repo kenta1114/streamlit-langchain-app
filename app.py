@@ -10,14 +10,17 @@ load_dotenv()
 OPENAI_API_KEY  = os.getenv("OPENAI_API_KEY")
 
 #LangChainの設定
-llm = ChatOpenAI(
-    openai_api_key=OPENAI_API_KEY,
-    model="gpt-3.5-turbo", 
-    temperature=0.7
-)
+try:
+    llm = ChatOpenAI(
+        openai_api_key=OPENAI_API_KEY,
+        model="gpt-3.5-turbo", 
+        temperature=0.7
+    )
+except Exception as e:
+    st.error(f"failed to initialize LangChain: {e}")
+    st.stop()
 
 memory = ConversationBufferMemory()
-
 conversation = ConversationChain(llm=llm, memory=memory)
 
 st.title("AI Chat App with LangChain")
