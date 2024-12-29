@@ -1,13 +1,16 @@
+import os
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from dotenv import load_dotenv
-import os
+from langchain_community.chat_models import ChatOpenAI
 
 load_dotenv()
 
 OPENAI_API_KEY  = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY is not set in .env file")
 
 #LangChainの設定
 try:
