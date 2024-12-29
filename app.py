@@ -1,3 +1,4 @@
+import getpass
 import os
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
@@ -8,9 +9,11 @@ from langchain_community.chat_models import ChatOpenAI
 
 load_dotenv()
 
-OPENAI_API_KEY  = os.getenv("OPENAI_API_KEY")
-if not OPENAI_API_KEY:
-    raise ValueError("OPENAI_API_KEY is not set in .env file")
+#OpenAI APIキーの設定
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+if not os.environ.get("OPENAI_API_KEY"):
+    os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter your OpenAI API key: ")
 
 #LangChainの設定
 try:
